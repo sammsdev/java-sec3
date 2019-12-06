@@ -4,7 +4,7 @@ public class HelloWorld {
         int myFirstNumber = 5;
         System.out.println("Hello World! First Number is = " + myFirstNumber);
 
-        /*  byteShortIntLong  */
+        /*  byteShortIntLong
         
         byte myMinByteValue = Byte.MIN_VALUE;
         byte myMaxByteValue = Byte.MAX_VALUE;
@@ -26,8 +26,33 @@ public class HelloWorld {
         System.out.println("Long Minimum Value = " + myMinLongValue);
         System.out.println("Long Maximum Value = " + myMaxLongValue);
 
-        /* end byteShortIntLong  */
+         end byteShortIntLong  */
 
+        /* start float and double
+        float myFloatMin  = Float.MIN_VALUE;
+        float myFloat  = Float.MAX_VALUE;
+        System.out.println("Float Min Value " + myFloatMin);
+        System.out.println("Float Max Value " + myFloat);
+
+        double myDoubleMin = Double.MIN_VALUE;
+        System.out.println("Double Min Value " + myDoubleMin);
+        double myDouble = Double.MAX_VALUE;
+        System.out.println("Double Max Value " + myDouble);
+
+        end float and double */
+
+        /* Converting pounds to kilograms Challenge - easy peasy
+
+        double pounds = 0, kilograms = 0;
+        Scanner in = new Scanner(System.in);
+        System.out.print("Pounds: ");
+        pounds = in.nextDouble();
+        kilograms = pounds * 0.45359237;
+        System.out.print(pounds + " pounds in Kilograms =  " + kilograms); */
+
+
+
+        
     }
 
 }

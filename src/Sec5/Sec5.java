@@ -4,7 +4,7 @@ public class Sec5 {
 
     public static void main(String[] args) {
 
-
+        System.out.println(isPerfectNumber(6));
     }
 
     public static void printDayOfTheWeek(int day) {
@@ -80,5 +80,50 @@ public class Sec5 {
         return original == reverse;
     }
 
+    public static int sumFirstAndLastDigit(int number) {
+        int lastDigit = 0;
+        if (number < 0)
+            return -1;
+        lastDigit = number % 10;
+        while (number >= 10) {
+            number /= 10;
+        }
+        return number + lastDigit;
+
+    }
+
+    public static int getEvenDigitSum(int number) {
+        int sum = 0;
+        if (number < 0)
+            return -1;
+        while (number > 0) {
+            int lastDigit = number % 10;
+            number /= 10;
+            if (lastDigit % 2 == 0)
+                sum += lastDigit;
+        }
+        return sum;
+    }
+
+    public static boolean hasSharedDigit (int a, int b){
+        if( (a < 10 || a > 99) || (b<10 || b> 99))
+            return false;
+        int rightA = a % 10;
+        int leftA = a / 10;
+        int rightB = b%10;
+        int leftB = b/10;
+        return (rightA == rightB || rightA == leftB || leftA == rightB || leftA == leftB);
+
+    }
+
+    public static  boolean isPerfectNumber (int number){
+        int sumDiv = 0;
+        if(number < 1)
+            return false;
+        for(int i = 1; i< number ; i++){
+            sumDiv += (number % i == 0) ? i : 0;
+        }
+        return sumDiv == number;
+    }
 
 }

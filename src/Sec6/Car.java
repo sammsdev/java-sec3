@@ -1,50 +1,28 @@
 package Sec6;
 
-public class Car {
-    private int doors;
+public class Car  extends Vehicle{
     private int wheels;
-    private String model;
-    private String engine;
-    private String colours;
+    private int doors;
+    private int gears;
+    private boolean isManual;
+    private int currentGear;
 
-    public void setDoors(int doors) {
-        this.doors = doors;
-    }
-
-    public int getDoors() {
-        return this.doors;
-    }
-
-    public void setWheels(int wheels) {
+    public Car(String name, String size, int wheels, int doors, int gears, boolean isManual) {
+        super(name, size);
         this.wheels = wheels;
+        this.doors = doors;
+        this.gears = gears;
+        this.isManual = isManual;
+        this.currentGear = 1;
     }
 
-    public int getWheels() {
-        return wheels;
+    public void changeGear(int currentGear) {
+        this.currentGear = currentGear;
+        System.out.println("Car.set(currentGear) = " + currentGear);
     }
 
-    public void setModel(String model) {
-        String validModel = model.toLowerCase();
-        this.model = validModel.equals("carrera") || validModel.equals("commodore") ? validModel : "unknown";
-    }
-
-    public String getModel() {
-        return this.model;
-    }
-
-    public void setEngine(String engine) {
-        this.engine = engine;
-    }
-
-    public String getEngine() {
-        return this.engine;
-    }
-
-    public String getColours() {
-        return colours;
-    }
-
-    public void setColours(String colours) {
-        this.colours = colours;
+    public void changeVelocity (int speed, int direction) {
+        move(speed, direction);
+        System.out.println("Char.changeVelocity()  = " + speed);
     }
 }

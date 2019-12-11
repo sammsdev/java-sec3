@@ -2,7 +2,6 @@ package Sec7;
 
 public class DeluxeHamburguer extends Hamburguer {
 
-
     public DeluxeHamburguer(double basePrice, String name, String breadRollType, String meat) {
         super(basePrice, name, breadRollType, meat);
         this.maxAdditionalItem = 2;

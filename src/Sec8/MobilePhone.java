@@ -6,6 +6,7 @@ public class MobilePhone {
     private ArrayList<Contact> contacts = new ArrayList<Contact>();
 
     public void addContact(Contact contact) {
+        //if contact is not  on file already, add it. If it is, print msg.
 
         if (!onFile(contact)) {
             ScreenMsgHandle.printLnMsg("Contact added with success.");
@@ -17,10 +18,15 @@ public class MobilePhone {
     }
 
     public void updateContact(String name, Contact newContact) {
+        // if could find contact index, update it. If not, print msg.
         int index = searchContactIndex(name);
         if (index >= 0) {
-            updateContact(index, newContact);
-            ScreenMsgHandle.printLnMsg("Contact modified with success.");
+            if(onFile(newContact)) {
+                ScreenMsgHandle.printLnMsg("Contact duplicate. Try a new contact.");
+            } else {
+                updateContact(index, newContact);
+                ScreenMsgHandle.printLnMsg("Contact modified with success.");
+            }
         } else {
             ScreenMsgHandle.printError();
         }
@@ -32,6 +38,7 @@ public class MobilePhone {
 
 
     public void removeContact(String name) {
+        // if could find contact index, remove it. If not, print msg.
         int index = searchContactIndex(name);
         if (index >= 0) {
             removeContact(contacts.get(index));

@@ -1,5 +1,6 @@
 package Sec8;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainChallenge1 {
@@ -9,6 +10,7 @@ public class MainChallenge1 {
     public static void main(String[] args) {
         int action = 0;  //
         do{
+
             ScreenMsgHandle.printMenu();
             //printMobilePhoneList();
             action = scanner.nextInt();

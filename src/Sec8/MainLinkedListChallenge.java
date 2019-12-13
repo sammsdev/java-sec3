@@ -1,9 +1,11 @@
 package Sec8;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Scanner;
+import java.util.logging.ConsoleHandler;
 
 public class MainLinkedListChallenge {
 
@@ -92,17 +94,24 @@ public class MainLinkedListChallenge {
                     break;
 
                 case 3:
-                    System.out.println("forward = " + foward);
                     if (foward) {
                         if (listIterator.hasNext()) {
                             System.out.println("Now playing " + listIterator.previous().toString());
+                            foward = false;
+                        } else {
+                            listIterator.previous();
+                            System.out.println("Now playing " + listIterator.next().toString());
                         }
-                        foward = false;
                     } else {
                         if (listIterator.hasPrevious()) {
                             System.out.println("Now playing " + listIterator.next().toString());
+                            foward = true;
+                        }else {
+                            listIterator.next();
+                            listIterator.next();
+                            listIterator.previous();
+                            System.out.println("Now playing " + listIterator.previous().toString());
                         }
-                        foward = true;
                     }
                     break;
 
@@ -111,4 +120,6 @@ public class MainLinkedListChallenge {
             }
         }
     }
+
+
 }

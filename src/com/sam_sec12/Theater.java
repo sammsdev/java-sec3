@@ -1,6 +1,7 @@
 package com.sam_sec12;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Theater {
@@ -18,40 +19,70 @@ public class Theater {
         }
     }
 
-    public void reserveSeat(String seatNumber) {
+    public void getSeats() {
         for(Seat s : seats)
-            if(s.getSeat().equals(seatNumber)) {
-               if(!s.isReserverd()){
-                   s.isReserverd = true;
-               }
-            }
-
+            System.out.println(s.toString());
     }
 
-    private class Seat {
+    /**
+     * @param seatNumber
+     * @return boolean
+     * reserve a seat - uses BinarySearch ( list of seats, requested seat )
+     */
+    public boolean reserveSeat(String seatNumber){
+        Seat requestedSeat = new Seat(seatNumber);
+        int foundSeat = Collections.binarySearch(seats, requestedSeat);
+        if(foundSeat >= 0) {
+            if(seats.get(foundSeat).isReserved()) {
+                System.out.println("Sorry, seat is already taken");
+                return false;
+            }
+            else{
+                System.out.println("Seat " + requestedSeat.getNumber() + " reserved");
+                seats.get(foundSeat).setReserved(true);
+                return true;
+            }
+        }
+        System.out.println("Seat not found");
+        return false;
+    }
+
+    /**
+     * this is an inner class that implements the Comparable interface type Seat
+     */
+    private class Seat implements Comparable <Seat> {
         private final String seat;
-        private boolean isReserverd;
+        private boolean isReserved;
 
         public Seat(String seat) {
             this.seat = seat;
-            this.isReserverd = false;
+            this.isReserved = false;
         }
 
-        public String getSeat() {
-            return this.seat;
+        public String getNumber() {
+            return seat;
         }
 
-        public boolean isReserverd() {
-            return this.isReserverd;
+        public void setReserved(boolean reserved) {
+            this.isReserved = reserved;
+        }
+
+        public boolean isReserved() {
+            return isReserved;
+        }
+
+        /**
+         * This method compares a given seat to the current object seat
+         */
+        @Override
+        public int compareTo(Seat seat) {
+            return this.seat.compareToIgnoreCase(seat.getNumber()); //compareToIgnoreCase ignores uppercase and lowercase
         }
 
         @Override
         public String toString() {
             return "Seat='" + seat + '\'' +
-                    "Reserved=" + isReserverd;
-
+                    "Reserved=" + isReserved;
         }
     }
-
-
 }
